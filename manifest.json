@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "A random image from the Art Institute of Chicago",
   "manifest_version": 3,
-  "author": "Dariu and Brian",
+  "author": "Darius and Brian",
   "action": {
-    "default_popup": "index.html",
+    "default_popup": "./public/index.html",
     "default_title": "AIC Random Image"
   }
 }
