@@ -29,11 +29,19 @@ function App() {
 
   return (
     <div className="App">
-      <img src={data} alt={title} style={{ width: '75vw', padding: '25px' }} />
+      <a href={data} target={'_blank'}>
+        <img
+          src={data}
+          alt={title}
+          style={{ width: '75vw', padding: '25px' }}
+        />
+      </a>
       <h1>{title}</h1>
       <h3>{date}</h3>
       <h2>{artist}</h2>
-      <a href={`https://www.artic.edu/artworks/${link}`}>more info...</a>
+      <a href={`https://www.artic.edu/artworks/${link}`} target={'_blank'}>
+        more info...
+      </a>
     </div>
   );
 }
