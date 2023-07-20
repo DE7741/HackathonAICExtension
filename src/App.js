@@ -6,32 +6,34 @@ function App() {
   const [title, setTitle] = useState('');
   const [artist, setArtist] = useState('');
   const [date, setDate] = useState('');
+  const [link, setLink] = useState('');
 
+  const randomNum = Math.floor(Math.random() * 100);
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch(
         'https://api.artic.edu/api/v1/artworks?page=1&limit=100'
       );
       const newData = await response.json();
-      const randomNum = await Math.floor(Math.random() * 100);
       // console.log(newData.data);
-      setData(
+      await setData(
         `https://www.artic.edu/iiif/2/${newData.data[randomNum].image_id}/full/843,/0/default.jpg`
       );
-      setTitle(newData.data[randomNum].title);
-      setDate(newData.data[randomNum].date_display);
-      setArtist(newData.data[randomNum].artist_display);
+      await setTitle(newData.data[randomNum].title);
+      await setDate(newData.data[randomNum].date_display);
+      await setArtist(newData.data[randomNum].artist_display);
+      await setLink(newData.data[randomNum].id);
     };
     fetchData();
   }, []);
 
   return (
     <div className="App">
-      <img src={data} />
+      <img src={data} alt={title} style={{ width: '75vw', padding: '25px' }} />
       <h1>{title}</h1>
-      <h2>{artist}</h2>
       <h3>{date}</h3>
-      <div>hello</div>
+      <h2>{artist}</h2>
+      <a href={`https://www.artic.edu/artworks/${link}`}>more info...</a>
     </div>
   );
 }
